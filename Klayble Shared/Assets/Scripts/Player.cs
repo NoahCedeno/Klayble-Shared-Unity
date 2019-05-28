@@ -4,15 +4,21 @@ using Newtonsoft.Json;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public int hp { get; private set; }
-    [SerializeField] public int atk { get; private set; }
-    [SerializeField] public int def { get; private set; }
-    [SerializeField] public string name { get; private set; }
-    [SerializeField] public List<Card> deck { get; private set; }
+    [SerializeField] public int HP { get; private set; }
+    [SerializeField] public int Atk { get; private set; }
+    [SerializeField] public int Def { get; private set; }
+    [SerializeField] public string Name { get; private set; }
+    [SerializeField] public List<Card> Deck { get; private set; }
 
     public void AddToDeck(Card card)
     {
-        card.player = this;
-        deck.Add(card);
+        card.Player = this;
+        Deck.Add(card);
+        
+    }
+
+    public string Serialize()
+    {
+        return JsonConvert.SerializeObject(this);
     }
 }
