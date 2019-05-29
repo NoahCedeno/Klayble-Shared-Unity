@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TileScript : MonoBehaviour , IBattlePiece
+public class TileScript : MonoBehaviour, IBattlePiece
 {
     public void ApplyEffect(IBattlePiece Target)
     {

@@ -1,12 +1,8 @@
-﻿using UnityEngine;
+﻿public interface IBattlePiece
+{
+    void Move(TileScript Target);
 
-public interface IBattlePiece {
+    void Attack(TileScript Target);
 
-    void Move(IBattlePiece Target);
-
-    void Attack(IBattlePiece Target);
-
-    void ApplyEffect(IBattlePiece Target);
-
-
+    void ApplyEffect(TileScript Target);
 }
