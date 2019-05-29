@@ -3,17 +3,16 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField] private List<IBattlePiece> BattlePieces { get; set; }
+    [SerializeField] private List<BattlePiece> BattlePieces { get; set; }
     [SerializeField] private TileScript[,] TileBoard { get; set; }
 
-    // Initialization
     private void Start()
     {
         TileBoard = new TileScript[6, 6];
-        BattlePieces = new List<IBattlePiece>();
+        BattlePieces = new List<BattlePiece>();
     }
 
-    private GameObject ObjectOnTile(TileScript Tile) // Unsure how to return multiple Components here. Perhaps just the GameObject?
+    private GameObject ObjectOnTile(TileScript Tile)
     {
         if (Physics.Raycast(Tile.transform.position, Vector3.up, out RaycastHit Hit))
         {
@@ -24,10 +23,9 @@ public class Board : MonoBehaviour
             return null;
         }
     }
-
-    // How to return the Type of Component as an IBattlePiece? We'd have to see if this works.
-    public IBattlePiece GetPieceOnTile(TileScript Tile)
+    
+    public BattlePiece GetPieceOnTile(TileScript Tile)
     {
-        return ObjectOnTile(Tile).GetComponent<IBattlePiece>();
+        return ObjectOnTile(Tile).GetComponent<BattlePiece>();
     }
 }

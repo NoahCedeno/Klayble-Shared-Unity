@@ -1,24 +1,36 @@
 ﻿using UnityEngine;
 
-public class DeckMaster : MonoBehaviour, IBattlePiece
+public class DeckMaster : BattlePiece
 {
-    [SerializeField] public int HP { get; private set; }
-    [SerializeField] public int Atk { get; private set; }
-    [SerializeField] public int Def { get; private set; }
-    [SerializeField] public string Name { get; private set; }
+    
     [SerializeField] public Player Player { get; set; }
 
-    public void ApplyEffect(IBattlePiece Target)
+    public override void ApplyEffect(BattlePiece Target)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Attack(IBattlePiece Target)
+    public override void Attack(BattlePiece Target)
     {
         throw new System.NotImplementedException();
     }
 
-    public void Move(IBattlePiece Target)
+    public override void ChangeHP(float Change)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Interact(BattlePiece Target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Interact(TileScript Target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Move(TileScript Target)
     {
         throw new System.NotImplementedException();
     }

@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public int HP { get; private set; }
     [SerializeField] public DeckMaster DeckMaster { get; private set; }
     [SerializeField] public List<Card> Deck { get; private set; }
+    [SerializeField] public string Name { get; private set; }
 
     public void AddToDeck(Card card)
     {
