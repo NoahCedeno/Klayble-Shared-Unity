@@ -13,13 +13,21 @@ public class Board : MonoBehaviour
         BattlePieces = new List<IBattlePiece>();
     }
 
-    public IBattlePiece ObjectOnTile(TileScript Tile)
+    private GameObject ObjectOnTile(TileScript Tile) // Unsure how to return multiple Components here. Perhaps just the GameObject?
     {
-        RaycastHit Hit;
-        if(Physics.Raycast(Tile.transform.position, Vector3.up, out Hit))
+        if (Physics.Raycast(Tile.transform.position, Vector3.up, out RaycastHit Hit))
         {
-            return Hit.collider.gameObject.GetComponents<Card, DeckMaster>;
+            return Hit.collider.gameObject;
+        }
+        else
+        {
+            return null;
         }
     }
 
+    // How to return the Type of Component as an IBattlePiece? We'd have to see if this works.
+    public IBattlePiece GetPieceOnTile(TileScript Tile)
+    {
+        return ObjectOnTile(Tile).GetComponent<IBattlePiece>();
+    }
 }
