@@ -24,7 +24,7 @@ public class Board : MonoBehaviour
         }
     }
     
-    public BattlePiece GetPieceOnTile(TileScript Tile)
+    public BattlePiece GetBattlePieceAt(TileScript Tile)
     {
         return ObjectOnTile(Tile).GetComponent<BattlePiece>();
     }

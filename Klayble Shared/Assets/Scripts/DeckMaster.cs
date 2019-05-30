@@ -10,16 +10,6 @@ public class DeckMaster : BattlePiece
         throw new System.NotImplementedException();
     }
 
-    public override void Attack(BattlePiece Target)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void ChangeHP(float Change)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void Interact(BattlePiece Target)
     {
         throw new System.NotImplementedException();

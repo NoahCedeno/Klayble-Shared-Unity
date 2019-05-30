@@ -20,17 +20,7 @@ public class Card : BattlePiece
         throw new System.NotImplementedException();
     }
 
-    public override void Attack(BattlePiece Target)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void ApplyEffect(BattlePiece Target)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void ChangeHP(float Change)
     {
         throw new System.NotImplementedException();
     }

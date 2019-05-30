@@ -10,11 +10,23 @@ public abstract class BattlePiece : MonoBehaviour
 
     public abstract void Move(TileScript Target);
 
-    public abstract void Attack(BattlePiece Target);
+    public void Attack(BattlePiece Target)
+    {
+        //TODO: Target.ChangeHP(CalculateDamage(Target);
+    }
+
+    /** TODO: Make Formula
+    protected float CalculateDamage(BattlePiece Target)
+        return ((this.Level) * (this.Atk / Target.Def));
+    }
+    */
 
     public abstract void ApplyEffect(BattlePiece Target);
 
-    public abstract void ChangeHP(float Change);
+    public void ChangeHP(int Change)
+    {
+        this.HP += Change;
+    }
 
     public abstract void Interact(BattlePiece Target);
 
