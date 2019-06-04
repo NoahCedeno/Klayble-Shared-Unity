@@ -75,7 +75,7 @@ public class BattlePiece : MonoBehaviour
         this.HP += Change;
     }
 
-    public void Interact(BattlePiece Target);
+    //public void Interact(BattlePiece Target);
 
-    public void Interact(TileScript Target);
+    //public void Interact(TileScript Target);
 }
