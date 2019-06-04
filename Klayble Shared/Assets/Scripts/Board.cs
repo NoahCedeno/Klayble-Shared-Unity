@@ -23,9 +23,15 @@ public class Board : MonoBehaviour
             return null;
         }
     }
-    
+
     public BattlePiece GetBattlePieceAt(TileScript Tile)
     {
         return ObjectOnTile(Tile).GetComponent<BattlePiece>();
+    }
+
+    // Once event OnMove is heard here, apply effect
+    public void ApplyEffect(BattlePiece Target, TileScript Tile)
+    {
+        GetBattlePieceAt(Tile).ApplyEffect(BattlePiece.Effects.Normal);
     }
 }

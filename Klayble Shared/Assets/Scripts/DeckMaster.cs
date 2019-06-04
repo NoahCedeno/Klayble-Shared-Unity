@@ -2,26 +2,5 @@
 
 public class DeckMaster : BattlePiece
 {
-    
     [SerializeField] public Player Player { get; set; }
-
-    public override void ApplyEffect(BattlePiece Target)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Interact(BattlePiece Target)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Interact(TileScript Target)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Move(TileScript Target)
-    {
-        throw new System.NotImplementedException();
-    }
 }
