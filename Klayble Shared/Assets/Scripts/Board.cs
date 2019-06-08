@@ -12,7 +12,6 @@ public class Board : MonoBehaviour
         TileBoard = new TileScript[6, 6];
         BattlePieces = new List<BattlePiece>();
         InitializeTileBoard();
-        StartCoroutine(FunnyBusiness());
     }
 
     private GameObject ObjectOnTile(TileScript Tile)
@@ -49,26 +48,4 @@ public class Board : MonoBehaviour
         }
     }
 
-    IEnumerator FunnyBusiness() // TODO: Delete this >:(
-    {
-        Vector3 endMarker = new Vector3(0, 2, 0);
-        float speed = 1f;
-
-        for (int i = 0; i <= 6; i++)
-        {
-            for (int j = 0; j <= 6; j++)
-            {
-                /* while (TileBoard[i, j].transform.position != endMarker THIS LOOP STINKS IT LOOPS FOREVER
-                {
-                    float startTime = Time.time;
-                    float journeyLength = Vector3.Distance(TileBoard[i, j].transform.position, endMarker);
-                    float distCovered = (Time.time - startTime) * speed;
-                    float fracJourney = distCovered / journeyLength;
-                    
-                    TileBoard[i, j].transform.position = Vector3.Lerp(TileBoard[i, j].transform.position, endMarker, fracJourney);
-                } */
-                yield return new WaitForSecondsRealtime(0.1f);
-            }
-        }
-    }
 }
