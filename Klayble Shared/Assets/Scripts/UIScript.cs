@@ -37,7 +37,12 @@ public class UIScript : MonoBehaviour
 
     public void DrawMenu(int menuNum)
     {
-        StopCoroutine(textTypeCRT);
+        float panelX, panelY;
+
+        if (textTypeCRT != null)
+        {
+            StopCoroutine(textTypeCRT);
+        }
         // TODO: Play Menu Sound!
         RedButton.onClick.RemoveAllListeners();
         GreenButton.onClick.RemoveAllListeners();
@@ -45,18 +50,38 @@ public class UIScript : MonoBehaviour
         switch (menuNum)
         {
             case 0:
+                panelX = Screen.width / 2;
+                panelY = Screen.height / 6;
+                ChangePanelTransform(Panel, panelX, panelY, 0.925f, 0.25f);
+                ChangeButtonTransform(GreenButton, 1.625f * panelX, panelY - 30, 1f, 1f);
+                ChangeButtonTransform(RedButton, 1.625f * panelX, panelY + 30, 1f, 1f);
+                MainMsgText.gameObject.SetActive(true);
+                ChangeTextTransform(MainMsgText, panelX - 100, panelY);
                 ChangeMenuAdvance(RedBtnGO, "Advance to Menu 1", 1);
                 ChangeMenuAdvance(GreenBtnGO, "Advance to Menu 2", 2);
-                textTypeCRT = TypeMsgText("This is Menu 0");
+                textTypeCRT = TypeMsgText("This is Menu 0.");
                 break;
 
             case 1:
+                panelX = 7 * Screen.width / 8;
+                panelY = Screen.height / 2;
+                ChangePanelTransform(Panel, panelX, panelY, 0.2f, 0.9f);
+                ChangeButtonTransform(GreenButton, panelX, 1.75f * panelY, 0.7f, 1f);
+                ChangeButtonTransform(RedButton, panelX, 1.5f * panelY, 0.7f, 1f);
+                MainMsgText.gameObject.SetActive(false);
                 ChangeMenuAdvance(RedBtnGO, "Return to Menu 0", 0);
                 ChangeMenuAdvance(GreenBtnGO, "Advance to Menu 2", 2);
                 textTypeCRT = TypeMsgText("Welcome to Menu 1! Ahh, lemons.");
                 break;
 
             case 2:
+                panelX = Screen.width / 2;
+                panelY = 5 * Screen.height / 6;
+                ChangePanelTransform(Panel, panelX, panelY, 0.925f, 0.25f);
+                ChangeButtonTransform(GreenButton, 1.625f * panelX, panelY - 30, 1f, 1f);
+                ChangeButtonTransform(RedButton, 1.625f * panelX, panelY + 30, 1f, 1f);
+                MainMsgText.gameObject.SetActive(true);
+                ChangeTextTransform(MainMsgText, panelX - 100, panelY);
                 ChangeMenuAdvance(RedBtnGO, "Return to Menu 0", 0);
                 ChangeMenuAdvance(GreenBtnGO, "Return to Menu 1", 1);
                 textTypeCRT = TypeMsgText("Menu 2!");
@@ -77,6 +102,27 @@ public class UIScript : MonoBehaviour
         this.menuText = (MenuText)toMenuNum;
         DrawMenu(toMenuNum);
     }
+
+    // Menu Transform Functions
+    private void ChangePanelTransform(GameObject ChangePnl, float newX, float newY, float xScale, float yScale)
+    {
+        ChangePnl.GetComponent<RectTransform>().localScale = new Vector3(xScale, yScale);
+        ChangePnl.GetComponent<RectTransform>().position = new Vector2(newX, newY);
+    }
+
+    private void ChangeButtonTransform(Button ChangeBtn, float newX, float newY, float xScale, float yScale)
+    {
+        ChangeBtn.GetComponent<RectTransform>().localScale = new Vector3(xScale, yScale);
+        ChangeBtn.GetComponent<RectTransform>().position = new Vector2(newX, newY);
+    }
+
+    private void ChangeTextTransform(Text ChangeText, float newX, float newY) // TODO: Implement font size change, other things to change possibly
+    {
+        ChangeText.rectTransform.position = new Vector2(newX, newY);
+        // TODO: Possibly implement a limit for which text can be displayed, scroll sort of thing?
+    }
+
+    //private void ChangeText()
 
     private IEnumerator TypeMsgText(string Message)
     {
