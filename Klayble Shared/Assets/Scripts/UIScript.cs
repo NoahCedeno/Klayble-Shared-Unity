@@ -20,6 +20,8 @@ public class UIScript : MonoBehaviour
     public enum MenuText { Menu0, Menu1, Menu2, Menu3 }
     private MenuText menuText;
 
+    private IEnumerator textTypeCRT;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -28,36 +30,39 @@ public class UIScript : MonoBehaviour
         menuText = MenuText.Menu0;
 
         // Events
-        // EventManager.ToggleUI += ToggleUIActive;
+        EventManager.ToggleUI += ToggleUIActive;
 
-        DrawMenu((int) this.menuText);
+        DrawMenu((int)this.menuText);
     }
 
     public void DrawMenu(int menuNum)
     {
-        StopAllCoroutines();
+        StopCoroutine(textTypeCRT);
+        // TODO: Play Menu Sound!
         RedButton.onClick.RemoveAllListeners();
         GreenButton.onClick.RemoveAllListeners();
 
-        switch(menuNum)
+        switch (menuNum)
         {
             case 0:
                 ChangeMenuAdvance(RedBtnGO, "Advance to Menu 1", 1);
                 ChangeMenuAdvance(GreenBtnGO, "Advance to Menu 2", 2);
-                StartCoroutine(TypeMsgText("This is Menu 0!"));
+                textTypeCRT = TypeMsgText("This is Menu 0");
                 break;
+
             case 1:
                 ChangeMenuAdvance(RedBtnGO, "Return to Menu 0", 0);
                 ChangeMenuAdvance(GreenBtnGO, "Advance to Menu 2", 2);
-                StartCoroutine(TypeMsgText("Welcome to Menu 1! Ahh, lemons."));
+                textTypeCRT = TypeMsgText("Welcome to Menu 1! Ahh, lemons.");
                 break;
+
             case 2:
                 ChangeMenuAdvance(RedBtnGO, "Return to Menu 0", 0);
                 ChangeMenuAdvance(GreenBtnGO, "Return to Menu 1", 1);
-                StartCoroutine(TypeMsgText("Menu 2!"));
+                textTypeCRT = TypeMsgText("Menu 2!");
                 break;
         }
-        Debug.Log(this.menuText);
+        StartCoroutine(textTypeCRT);
     }
 
     // Changes the Menu's buttons' destinations, and text.
@@ -69,7 +74,7 @@ public class UIScript : MonoBehaviour
 
     public void AdvanceMenu(int toMenuNum)
     {
-        this.menuText = (MenuText) toMenuNum;
+        this.menuText = (MenuText)toMenuNum;
         DrawMenu(toMenuNum);
     }
 
