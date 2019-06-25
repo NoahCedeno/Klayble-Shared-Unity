@@ -23,7 +23,6 @@ public class UIScript : MonoBehaviour
     private IEnumerator textTypeCRT;
 
     public AudioSource menu1;
-    public AudioSource menu2;
 
     // Start is called before the first frame update
     private void Start()
@@ -38,6 +37,13 @@ public class UIScript : MonoBehaviour
         DrawMenu((int)this.menuText);
     }
 
+    public void AdvanceMenu(int toMenuNum)
+    {
+        menu1.Play();
+        this.menuText = (MenuText)toMenuNum;
+        DrawMenu(toMenuNum);
+    }
+
     public void DrawMenu(int menuNum)
     {
         float panelX, panelY;
@@ -46,13 +52,12 @@ public class UIScript : MonoBehaviour
         {
             StopCoroutine(textTypeCRT);
         }
-        // TODO: Play Menu Sound!
         RedButton.onClick.RemoveAllListeners();
         GreenButton.onClick.RemoveAllListeners();
 
         switch (menuNum)
         {
-            case 0:
+            case 0: // TODO: I want to refactor this, but I'm not sure how! I want to namespace it.
                 panelX = Screen.width / 2;
                 panelY = Screen.height / 6;
                 ChangePanelTransform(Panel, panelX, panelY, 0.925f, 0.25f);
@@ -100,12 +105,6 @@ public class UIScript : MonoBehaviour
         btn.GetComponent<Button>().onClick.AddListener(() => AdvanceMenu(toMenuNum));
     }
 
-    public void AdvanceMenu(int toMenuNum)
-    {
-        menu1.Play();
-        this.menuText = (MenuText)toMenuNum;
-        DrawMenu(toMenuNum);
-    }
 
     // Menu Transform Functions
     private void ChangePanelTransform(GameObject ChangePnl, float newX, float newY, float xScale, float yScale)
@@ -126,7 +125,7 @@ public class UIScript : MonoBehaviour
         // TODO: Possibly implement a limit for which text can be displayed, scroll sort of thing?
     }
 
-    //private void ChangeText()
+    
 
     private IEnumerator TypeMsgText(string Message)
     {
