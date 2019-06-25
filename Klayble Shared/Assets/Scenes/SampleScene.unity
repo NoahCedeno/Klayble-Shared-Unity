@@ -3644,9 +3644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b33246b045d0d4584f185db19db132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedButton: {fileID: 708638418}
+  RedBtnGO: {fileID: 708638418}
   RedButtonText: {fileID: 583412177}
-  GreenButton: {fileID: 1244143170}
+  GreenBtnGO: {fileID: 1244143170}
   GreenButtonText: {fileID: 759701276}
   MainMsgText: {fileID: 865974582}
   Panel: {fileID: 466693092}

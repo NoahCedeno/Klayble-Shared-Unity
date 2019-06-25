@@ -14,6 +14,7 @@ public class Board : MonoBehaviour
         InitializeTileBoard();
     }
 
+    // TODO: NEVER TESTED THIS RAYCAST ATTEMPT, MUST AT SOME POINT
     private GameObject ObjectOnTile(TileScript Tile)
     {
         if (Physics.Raycast(Tile.transform.position, Vector3.up, out RaycastHit Hit))

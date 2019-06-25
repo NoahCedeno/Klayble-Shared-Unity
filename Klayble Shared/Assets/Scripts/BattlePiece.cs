@@ -19,10 +19,10 @@ public class BattlePiece : MonoBehaviour
     public BattlePiece()
     {
         this.Name = "MissingName";
-        this.Level = 1;
-        this.Atk = 1;
-        this.Def = 1;
-        this.HP = 10;
+        this.Level = 0;
+        this.Atk = 0;
+        this.Def = 0;
+        this.HP = 1;
         this.Effect = Effects.Normal;
     }
 

@@ -24,7 +24,7 @@ public class Card : BattlePiece
     {
     }
 
-    private void OnEnable()
+    new private void OnEnable()
     {
         Debug.Log("Card " + Name + " made under owner " + Player.Name);
     }
