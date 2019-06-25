@@ -22,6 +22,9 @@ public class UIScript : MonoBehaviour
 
     private IEnumerator textTypeCRT;
 
+    public AudioSource menu1;
+    public AudioSource menu2;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -99,6 +102,7 @@ public class UIScript : MonoBehaviour
 
     public void AdvanceMenu(int toMenuNum)
     {
+        menu1.Play();
         this.menuText = (MenuText)toMenuNum;
         DrawMenu(toMenuNum);
     }
