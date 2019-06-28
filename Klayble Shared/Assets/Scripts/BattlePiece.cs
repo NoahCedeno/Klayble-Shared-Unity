@@ -11,8 +11,8 @@ public class BattlePiece : MonoBehaviour
     public enum Effects { Normal, Burning, Poison, Freezing, Sleeping, Paralyzed }
     [SerializeField] public Effects Effect { get; private set; }
 
-    public delegate void OnMoveHandler(BattlePiece User, TileScript Location);
-    public static event OnMoveHandler OnMove;
+    //public delegate void OnMoveHandler(BattlePiece User, BattlePiece Target);
+    //public static event OnMoveHandler OnMove;
 
 
     // Constructors
@@ -45,18 +45,25 @@ public class BattlePiece : MonoBehaviour
 
     public void OnEnable()
     {
-        // Possibly do something here
+        EventManager.OnMove += Move;
+        EventManager.OnAttack += Attack;
     }
 
-    public void Move(TileScript Target)
+    public void OnDisable()
     {
-        OnMove(this, Target); 
+        EventManager.OnMove -= Move;
+        EventManager.OnAttack -= Attack;
+    }
+
+    public void Move(BattlePiece User, BattlePiece Target)
+    {
         // TODO: Lerp Animation for moving the Card!
-        this.transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y + 1, Target.transform.position.z);
+        transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y + 1, Target.transform.position.z);
     }
 
-    public void Attack(BattlePiece Target)
+    public void Attack(BattlePiece User, BattlePiece Target)
     {
+        
         Target.ChangeHP(this.CalculateDamage(Target));
     }
 

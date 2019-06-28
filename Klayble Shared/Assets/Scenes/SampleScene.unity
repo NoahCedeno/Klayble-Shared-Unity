@@ -3641,7 +3641,6 @@ MonoBehaviour:
   Panel: {fileID: 466693092}
   TextSpeed: 0.05
   menu1: {fileID: 1747106215}
-  menu2: {fileID: 0}
 --- !u!1001 &1631535714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3895,8 +3894,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a814418114fcd2741918bf6b4674aa4e, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
