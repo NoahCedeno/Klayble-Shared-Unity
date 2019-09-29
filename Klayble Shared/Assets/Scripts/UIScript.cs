@@ -4,17 +4,18 @@ using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
-    public GameObject RedBtnGO;
+    private GameObject RedBtnGO;
     private Button RedButton;
-    public Text RedButtonText;
+    private Text RedButtonText;
 
-    public GameObject GreenBtnGO;
+    private GameObject GreenBtnGO;
     private Button GreenButton;
-    public Text GreenButtonText;
+    private Text GreenButtonText;
 
-    public Text MainMsgText;
-    public GameObject Panel;
+    private Text MainMsgText;
+    private GameObject Panel;
 
+    [Range(0.01f, 0.1f)]
     public float TextSpeed = 0.05f;
 
     public enum MenuText { Menu0, Menu1, Menu2, Menu3 }
@@ -27,8 +28,18 @@ public class UIScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        
+        RedBtnGO = GameObject.Find("RedButton");
         RedButton = RedBtnGO.GetComponent<Button>();
+        RedButtonText = RedButton.GetComponent<Text>();
+
+        GreenBtnGO = GameObject.Find("GreenButton");
         GreenButton = GreenBtnGO.GetComponent<Button>();
+        GreenButtonText = GreenButton.GetComponent<Text>();
+
+        Panel = GameObject.Find("Panel");
+        MainMsgText = GameObject.Find("MainMsgText").GetComponent<Text>();
+
         menuText = MenuText.Menu0;
 
         // Events
