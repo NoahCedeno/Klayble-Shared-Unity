@@ -19,6 +19,7 @@ public class UIScript : MonoBehaviour
     public float TextSpeed = 0.05f;
 
     public enum MenuText { Menu0, Menu1, Menu2, Menu3 }
+
     private MenuText menuText;
 
     private IEnumerator textTypeCRT;
@@ -28,7 +29,6 @@ public class UIScript : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
         RedBtnGO = GameObject.Find("RedButton");
         RedButton = RedBtnGO.GetComponent<Button>();
         RedButtonText = RedButton.GetComponent<Text>();
@@ -116,7 +116,6 @@ public class UIScript : MonoBehaviour
         btn.GetComponent<Button>().onClick.AddListener(() => AdvanceMenu(toMenuNum));
     }
 
-
     // Menu Transform Functions
     private void ChangePanelTransform(GameObject ChangePnl, float newX, float newY, float xScale, float yScale)
     {
@@ -135,8 +134,6 @@ public class UIScript : MonoBehaviour
         ChangeText.rectTransform.position = new Vector2(newX, newY);
         // TODO: Possibly implement a limit for which text can be displayed, scroll sort of thing?
     }
-
-    
 
     private IEnumerator TypeMsgText(string Message)
     {

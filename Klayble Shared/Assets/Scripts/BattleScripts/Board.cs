@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -40,7 +39,7 @@ public class Board : MonoBehaviour
 
     private void InitializeTileBoard()
     {
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             for (int j = 0; j < 6; j++)
             {
@@ -48,5 +47,4 @@ public class Board : MonoBehaviour
             }
         }
     }
-
 }

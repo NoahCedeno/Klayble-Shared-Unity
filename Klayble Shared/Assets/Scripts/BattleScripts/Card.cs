@@ -20,8 +20,9 @@ public class Card : BattlePiece
         this.CardID = CardID;
     }
 
-    public Card() : base()
+    public override string ToString()
     {
+        return this.name;
     }
 
     new private void OnEnable()

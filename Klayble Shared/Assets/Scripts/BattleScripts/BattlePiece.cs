@@ -8,12 +8,14 @@ public class BattlePiece : MonoBehaviour
     [SerializeField] public string Name { get; protected set; }
     [SerializeField] public int Level { get; protected set; }
 
+    [SerializeField] public readonly Vector3 Position;
+
     public enum Effects { Normal, Burning, Poison, Freezing, Sleeping, Paralyzed }
+
     [SerializeField] public Effects Effect { get; private set; }
 
     //public delegate void OnMoveHandler(BattlePiece User, BattlePiece Target);
     //public static event OnMoveHandler OnMove;
-
 
     // Constructors
     public BattlePiece()
@@ -24,6 +26,7 @@ public class BattlePiece : MonoBehaviour
         this.Def = 0;
         this.HP = 1;
         this.Effect = Effects.Normal;
+        this.Position = Vector3.zero;
     }
 
     public BattlePiece(string Name, int Level) : this()
@@ -39,32 +42,26 @@ public class BattlePiece : MonoBehaviour
         this.HP = HP;
         this.Atk = Atk;
         this.Def = Def;
+        this.Position = Vector3.zero;
     }
 
     // Behaviors
 
     public void OnEnable()
     {
-        EventManager.OnMove += Move;
-        EventManager.OnAttack += Attack;
+        // EventManager.OnMove += Move;
+        // EventManager.OnAttack += Attack;
     }
 
     public void OnDisable()
     {
-        EventManager.OnMove -= Move;
-        EventManager.OnAttack -= Attack;
+        // EventManager.OnMove -= Move;
+        // EventManager.OnAttack -= Attack;
     }
 
-    public void Move(BattlePiece User, BattlePiece Target)
+    public override string ToString()
     {
-        // TODO: Lerp Animation for moving the Card!
-        transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y + 1, Target.transform.position.z);
-    }
-
-    public void Attack(BattlePiece User, BattlePiece Target)
-    {
-        
-        Target.ChangeHP(this.CalculateDamage(Target));
+        return this.Name;
     }
 
     protected int CalculateDamage(BattlePiece Target)
@@ -81,8 +78,4 @@ public class BattlePiece : MonoBehaviour
     {
         this.HP += Change;
     }
-
-    //public void Interact(BattlePiece Target);
-
-    //public void Interact(TileScript Target);
 }
