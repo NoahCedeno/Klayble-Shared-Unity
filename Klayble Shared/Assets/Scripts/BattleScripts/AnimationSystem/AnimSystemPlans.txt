@@ -1,0 +1,63 @@
+I like leaving little planning documents around like this, it's useful for me.
+At least, I can imagine it being useful to a me that's forgotten what I planned
+to do if I leave this topic alone for too long in the future.
+
+The goal of this planning document is to determine a framework for an animation
+system for cutscenes. I really should call this "CutsceneSystem" or something.
+
+I'm thinking about an abstract system that is essentially a Command Pattern,
+yes again. I just can't get over how useful that pattern is!
+
+So I'm thinking about making something about the pattern with moving objects in
+the scene (including the camera and actors), and executing animations.
+
+These would be called something like:
+
+! ! !
+
+interface IAnimAction
+
+enum AnimationActions {
+    MoveObject,
+    PlayAnimation,
+    Wait,
+    ShowDialogue,
+    TriggerVisual
+}
+
+! ! !
+
+I might have to define some generic names for animations or something. I can
+have differently named animations in the Project View I think, but if I'm
+calling them through a script, I'll have to create generically named or just
+abstract references to them.
+
+I don't know about this, though, I'm not experienced with animations YET. This
+is solid logic at this point, though.
+
+So yeah, here's what I had in mind for the system, in terms of the enumeration:
+
+- MoveObject might have to be expanded upon, but should alter the transform of
+  object in question in some way.
+  Again, I might have to add more enumeration states to say like LerpObject &
+  ChangePosition or something like that.
+
+- PlayAnimation just triggers one of a few generic animations that Objects may
+  share like PhysAttack, MagicAttack, GetHit, Die, etc. I'll have to add that
+  or just rework some of the abstract relationships of the Card Class.
+
+- Wait should just be a generic wait function thing. I think this will have to
+  be implemented into other parts of this enumeration or something like that.
+  I'm thinking perhaps that I wait for an input to advance to the next
+  AnimationActions. This would simply be a while(!AdvanceKeyPressed) {} or
+  something, I think. Actually, it would have to be something like a do-while
+  loop that executes the IAnimAction and then Waits until AdvanceKeyPressed is
+  true.
+
+- ShowDialogue should call for a specific Dialogue Box object to be edited and
+  drawn.
+
+- TriggerVisual might be obsolete but I don't know, I don't think so. I'm
+  thinking something like triggering 2D effects in front of the camera or
+  something, like the big slowdown in Smash Ultimate when you KO someone or
+  something.
