@@ -1,0 +1,69 @@
+Perhaps I'm getting ahead of myself. This sort of comes after the turn system
+is completed, but I want to think about when I trigger animations for Cards.
+They should all have their own animation states or something like that, running
+an Idle anim most of the time, but otherwise switching when they need to.
+
+I have to do more research on animations, but I think the order of things per
+turn is:
+
+1. UI Prompt for CardTurn.
+2. When CardTurn is invoked, I have to play the specific animation for a
+   specific event.
+
+Actually, this system works in harmony with what I was going to do either way.
+I wanted to implement a Command Pattern for running animations as a part of a
+namespaced CutsceneSystem. This system is meant to trigger animations at
+varying times, both synchronously and asynchronously through single and
+compound AnimAction classes.
+
+! ! !
+
+I actually really like the idea of a 'Compound Command' that contains two other
+derived Commands from the pattern. It would execute them around the same time,
+one has to be after another. The timing differential shouldn't matter that much,
+but I'd have to think about exploiting different threads to asynchronously
+trigger a pair or group of synchronized animations.
+
+Enough ouch-brain talk though, I don't feel equipped to continue that
+discussion at this point.
+
+! ! !
+
+As I was saying anyway, it's important to store a struct or just individually
+declared (like instance variables) animation containers that reference a
+specific animation file or something like that. That's the feature that my
+planned CutsceneSystem hinges on, calling polymorphic, generically named
+animations to standardize a system to build a cutscene on.
+
+This works with the normal animation system that I'm thinking should be used in
+the TurnSystem as well. It also specifies an order on how to execute the game
+logic and the Turn System as a whole. I can directly call the animations to
+trigger in this system, whereas I would need a specific order to run my
+animations in for the CutsceneSystem.
+
+SO BASICALLY:
+
+    For each interactive BattlePiece (may have to rethink my architecture/
+    class structure here), I need to have a generic set of animations. Maybe
+    I will make a struct that contains references to the animations just to
+    organize them? That might be useful, to declutter my instance variables a
+    bit, but I haven't put more than a few minutes of thought into the actual
+    workings of this.
+    There will be a CutsceneSystem that will be used to create cutscenes. This
+    will use a Command Pattern of animation-related commands, and execute them
+    in a specific order. This will use the generic/polymorphic animations per
+    "interactive BattlePiece" class.
+    There will also have to be some thought put into calling the animations
+    when the TurnSystem is using them mid-game. Hmm, and about the whole Idle
+    animation.
+
+! ! ! ! !
+
+    Perhaps each "interactive BattlePiece" that has animation should share an
+    enumeration of the generic animation actions for a BattlePiece. This way,
+    I can incorporate an enumeration-type field that specifies which animation
+    to be running in Update(), or however I'm going to loop the animations?
+
+    Good thinking, me! You just earned yourself a coffee. Or something.
+
+! ! ! ! !
