@@ -1,0 +1,86 @@
+10/8/19 Update:
+~~~~~~~~~~~~~~~
+
+Should I have a static TurnInvoker?
+
+YES:
+
+I think it should be useful because there should only be one TurnInvoker. We
+don't need more, and it can break things if there's more than one. Not really
+break things, it would just be bad.
+
+As well, the TurnList being static is useful. Who knows who might need this
+besides an AI or something like that. This tells me that it might NOT need to
+be this way. But do I really need to protect the TurnList? I only need to
+serialize it here and there, and there only really needs to be ONE PER BATTLE.
+
+I wonder, if the static keyword has a lifespan of more than a scene? I think it
+might!
+It would be useful to store the TurnInvoker perhaps. Or would it?
+
+! ! !
+
+    In each battle, the only things that really matter are the states of the
+player and each of the player's Card, the TurnList, and the outcome of the
+battle.
+
+    I should be thinking about where I store this data. There might be another
+class or script that's called a BattleRecord or something like that that can
+store all of this data.
+
+    Perhaps I call an event when the match is over that calls for this data to
+be stored. THIS guy will need to be static. Could be called something like
+"BattleSaver" or "BattleRecord".
+
+    First, per each match, there will need to be a class called BattleDetails
+that specifies AI and AI things if we will have a story and need to do that.
+I'm thinking Fire Emblem and things like that, but that might go against our
+game design. BattleDetails ends up storing the initial details of the match.
+
+    If they belong to a plot story, a StoryBattleDetails should be instantiated
+when entering a story mission from a UI or something like that. We can get the
+important details like the date the battle was had, the missionNumber from the
+UI Event, all that; We can instantiate it in an OnStartMission event or
+something for when the story mission is started.
+
+    Next, there should be the actual BattleRecord. This should be done in a
+number of situations. Here's a little enumeration of said events:
+- Someone Winning the Game
+    - Includes Forfeiting
+- Exiting the Game Midmatch
+
+! ! ! ! !
+
+The data that the BattleRecord contains will be what I said earlier:
+- BattleDetails BattleDetail
+- List<CardTurn> TurnList
+
+    There has to be an abstract BattleDetails class that specifies preset Board
+and Tile layouts, things like that with certain events and things like that.
+
+    From this, the static BattleSaver instance will store everything as a
+BattleRecord. It'll take in the BattleDetails and the TurnList after the game
+and act as a container to serialize both of those.
+
+(BattleSaver) <-- Saved by <-- (BattleRecord)
+                                     ^
+                                     |
+                             Saved/Stored In
+                                     |
+                              (BattleDetails)
+                                     ^
+                                     |
+                                  Extends
+                                     |
+                                    / \
+                 (PlotBattleDetails)   (PVPBattleDetails)
+                 - int missionNumber   - int PlayerID
+                 - Board plotBoard
+
+
+
+! ! ! ! !
+
+
+
+! ! !

@@ -19,12 +19,12 @@ namespace TurnSystem
             cardTurn = ct;
         }
 
-        public void Invoke()
+        public void InvokeTurn()
         {
             Turns.Add(cardTurn);
             cardTurn.ExecuteTurn();
         }
-        
+
     }
 
 }
