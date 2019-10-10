@@ -67,3 +67,17 @@ SO BASICALLY:
     Good thinking, me! You just earned yourself a coffee. Or something.
 
 ! ! ! ! !
+
+Things on the docket for the next few dev sessions:
+
+    Animation System:
+    - Researching animations
+    - Making a model?
+
+    Turn System:
+    - Actual system that runs the whole game
+    - Perhaps lerp objects that MoveTurn is used on
+
+    Cards/BattlePieces/Whatever:
+    - Mutators for the fields
+!!! - RETHINK CLASS STRUCTURE FOR BATTLEPIECES
