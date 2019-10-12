@@ -12,6 +12,9 @@
         }
 
         public abstract void ExecuteTurn();
+
+        public abstract override string ToString();
+
     }
 }
 

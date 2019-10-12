@@ -11,9 +11,15 @@ namespace TurnSystem
             Target = target;
         }
 
+        public override string ToString()
+        {
+            return this.Receiver.ToString() + " wants to attack " + Target.ToString() + "!";
+        }
+
         public override void ExecuteTurn()
         {
-            Debug.Log(this.Receiver.ToString() + " wants to attack " + Target.ToString() + "!");
+            Debug.Log(this.ToString());
         }
+
     }
 }

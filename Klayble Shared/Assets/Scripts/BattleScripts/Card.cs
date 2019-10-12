@@ -22,7 +22,7 @@ public class Card : BattlePiece
 
     public override string ToString()
     {
-        return this.name;
+        return this.CardID.ToString();
     }
 
     new private void OnEnable()

@@ -11,10 +11,15 @@ namespace TurnSystem
             Target = target;
         }
 
+        public override string ToString()
+        {
+            return this.Receiver.ToString() + " wants to interact with " + Target.ToString() + "!";
+        }
+
         public override void ExecuteTurn()
         {
             // TODO: Implent a generic Interaction Sequence
-            Debug.Log(this.Receiver.ToString() + " wants to interact with " + Target.ToString() + "!");
+            Debug.Log(this.ToString());
         }
     }
 }
