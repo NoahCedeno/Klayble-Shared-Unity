@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using BattleSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace TurnSystem
 {
-    public class TurnInvoker : MonoBehaviour {
-
+    public class TurnInvoker : MonoBehaviour
+    {
         public readonly List<CardTurn> Turns;
         public CardTurn cardTurn;
 
@@ -30,7 +30,7 @@ namespace TurnSystem
         {
             Debug.Log("Here's the Turns List");
             string finalString = "";
-            foreach(CardTurn ct in Turns)
+            foreach (CardTurn ct in Turns)
             {
                 finalString += ct.ToString() + "\n";
             }
@@ -39,7 +39,8 @@ namespace TurnSystem
 
         public void Display(int index)
         {
-            try {
+            try
+            {
                 Debug.Log(Turns[index]);
             }
             catch (ArgumentOutOfRangeException)
@@ -47,24 +48,5 @@ namespace TurnSystem
                 Debug.Log("HAH you thought; arg out of bounds baby");
             }
         }
-
-        void Test()
-        {
-            // Tests UwU
-
-            TurnInvoker TI = new TurnInvoker();
-            TI.SetCardTurn(new AttackTurn(new Card(1), new Card(2)));
-            TI.InvokeTurn();
-            TI.SetCardTurn(new MoveTurn(new Card(69), 1, 1));
-            TI.InvokeTurn();
-            TI.SetCardTurn(new InteractTurn(new Card(5), new Card(6)));
-            TI.InvokeTurn();
-
-            TI.Display(0);
-            TI.Display(3);
-            TI.Display();
-        }
-
     }
-
 }

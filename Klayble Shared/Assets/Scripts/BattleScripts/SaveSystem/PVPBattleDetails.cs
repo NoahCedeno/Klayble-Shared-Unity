@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using BattleSystem;
 
 namespace SaveSystem
 {
-
     public class PVPBattleDetails : BattleDetails
     {
-        readonly int EnemyPlayerID;
+        private readonly int EnemyPlayerID;
 
         public PVPBattleDetails(Board boardLayout, int enemyPlayerID) : base(boardLayout)
         {

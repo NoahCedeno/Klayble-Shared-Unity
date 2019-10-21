@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using BattleSystem;
 
 namespace TurnSystem
 {
@@ -6,7 +7,7 @@ namespace TurnSystem
     {
         public readonly BattlePiece Target;
 
-        public InteractTurn(Card receiver, BattlePiece target) : base(receiver, TurnActions.Interact)
+        public InteractTurn(BattleCard receiver, BattlePiece target) : base(receiver, TurnActions.Interact)
         {
             Target = target;
         }

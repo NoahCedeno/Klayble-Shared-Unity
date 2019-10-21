@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
-public class DeckMaster : BattlePiece
+namespace BattleSystem
 {
-    [SerializeField] public Player Player { get; set; }
+
+    public class DeckMaster : BattleCharacter
+    {
+        [SerializeField] public Player Player { get; set; }
+    }
 }

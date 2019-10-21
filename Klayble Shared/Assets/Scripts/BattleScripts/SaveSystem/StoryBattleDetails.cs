@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using BattleSystem;
 
 namespace SaveSystem
 {
@@ -13,8 +11,9 @@ namespace SaveSystem
          * I'm using an abstract constructor that takes in a Board boardLayout and initializes a protected
          * Board by assigning it to the argument boardLayout. I'm not sure if this ensures individual BoardLayouts
          * for each instance of a derived class of BattleDetails.
-         * 
+         *
          * TODO: I also need a List for the number of Players in a game, but this should be for later.
+         * Also for BattlePieces (BattleCharacters & BattleStructures)!
          */
 
         public StoryBattleDetails(Board boardLayout, int missionNumber) : base(boardLayout)

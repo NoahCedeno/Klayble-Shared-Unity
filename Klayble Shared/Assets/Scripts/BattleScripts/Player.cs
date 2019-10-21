@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
-    [SerializeField] public DeckMaster DeckMaster { get; private set; }
-    [SerializeField] public List<Card> Deck { get; private set; }
+    [SerializeField] public List<CardData> Deck { get; private set; }
     [SerializeField] public string Name { get; private set; }
 
-    public void AddToDeck(Card card)
+    public void AddToDeck(CardData card)
     {
         card.Player = this;
         Deck.Add(card);
