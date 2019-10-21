@@ -11,7 +11,9 @@ namespace BattleSystem
 
         [SerializeField] public readonly Vector2 BoardPosition;
 
-       
+        // TODO: Reference Model and other stuff!
+
+
 
         public override string ToString()
         {
